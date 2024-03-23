@@ -1,0 +1,8 @@
+vim.keymap.set('n', '<leader>bd', ':bd!<cr>', { desc = 'Close current buffer' })
+vim.keymap.set('', '<leader>rr', ':source %<cr>', {desc = 'Source the current file'})
+vim.keymap.set('v', '>', '>gv', { desc = "After tab, re-select" })
+vim.keymap.set('v', '<', '<gv', { desc = "After tab, re-select" })
+vim.keymap.set('n', 'n', 'nzzzv', { desc = "Go to next search result, and puts the cursor at the middle of the screen" })
+vim.keymap.set('n', 'N', 'Nzzzv', { desc = "Go to previous search result, and puts the cursor at the middle of the screen" })
+vim.keymap.set('n', '<C-s>', ':w<cr>', { desc = "Save current buffer" })
+vim.keymap.set('n', '<leader>q', ':q!<cr>', { desc = "Close window" })
