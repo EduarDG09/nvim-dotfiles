@@ -9,28 +9,28 @@ function M.setup()
   cmp.setup({
     snippet =  {
       expand = function(args)
-        luasnip.lsp_expands(args.body)
+        luasnip.lsp_expand(args.body)
       end,
     },
     mapping = {
       ["<C-d>"] = cmp.mapping.scroll_docs(-4),
       ["<C-f>"] = cmp.mapping.scroll_docs(4),
       ["<C-e>"] = cmp.mapping.abort(),
-      ["<C-n>"] = cmp.mapping(function(fallback)
+      ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
-        elseif luasnip.choise_active() then
+        elseif luasnip.choice_active() then
           luasnip.change_choice()
         else
           fallback()
         end
       end, {"i", "s"}),
-      ["<C-p>"] = cmp.mapping.select_prev_item(),
-      ["<C-y>"] = cmp.mapping.confirm {
+      ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+      ["<CR>"] = cmp.mapping.confirm {
         behavior = cmp.ConfirmBehavior.Insert,
         select = true,
       },
-      ["<C-space>"] = cmp.mapping.complete(),
+      ["<C-Space>"] = cmp.mapping.complete(),
     },
     sources = {
       { name = "nvim_lsp" },

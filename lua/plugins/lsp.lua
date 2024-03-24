@@ -31,10 +31,12 @@ return {
         vim.lsp.buf.format { async = true }
       end, opts)
     end
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
     require("neodev").setup()
     require("lspconfig").lua_ls.setup({
       on_attach = on_attach,
+      capabilities = capabilities,
       settings = {
         Lua = {
           telemetry = { enable = false },
@@ -44,6 +46,7 @@ return {
     })
     require("lspconfig").tsserver.setup({
       on_attach = on_attach,
+      capabilities = capabilities,
     })
   end
 }
