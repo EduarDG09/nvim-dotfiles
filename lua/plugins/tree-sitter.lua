@@ -6,8 +6,12 @@ return {
   main = "nvim-treesitter.configs",
   opts = {
     ensure_installed = {
-      "lua", 
+      "c",
+      "vim",
+      "vimdoc",
+      "lua",
       "luadoc",
+      "query",
       "html",
       "css",
       "javascript",
@@ -18,6 +22,15 @@ return {
     },
     indent = {
       enable = true
+    },
+    incremental_selection = {
+      enable = true,
+      keymaps = {
+        init_selection = "<Leader>ss", -- set to `false` to disable one of the mappings
+        node_incremental = "<Leader>si",
+        scope_incremental = "<Leader>sc",
+        node_decremental = "<Leader>sd",
+     },
     },
     textobjects = {
       select = {

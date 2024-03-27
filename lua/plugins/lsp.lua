@@ -31,10 +31,15 @@ return {
         vim.lsp.buf.format { async = true }
       end, opts)
     end
-    local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+    local lspconfig = require("lspconfig")
 
     require("neodev").setup()
-    require("lspconfig").lua_ls.setup({
+
+    lspconfig.lua_ls.setup({
       on_attach = on_attach,
       capabilities = capabilities,
       settings = {
@@ -44,9 +49,12 @@ return {
         }
       }
     })
-    require("lspconfig").tsserver.setup({
+
+    lspconfig.tsserver.setup({
       on_attach = on_attach,
       capabilities = capabilities,
     })
+
+    lspconfig.cssls.setup({})
   end
 }
